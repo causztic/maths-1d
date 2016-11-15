@@ -1,5 +1,4 @@
 % compress an image using svd
-% convert color image to grayscale so we don't need to make 2 images
 
 pic = double(imread('test.jpg'));
 
@@ -10,9 +9,9 @@ b = pic(:,:,3);
 
 % csvd compress each color channel
 % based on color channel, individually optimize and compress
-cr = csvd(double(r));
-cg = csvd(double(g));
-cb = csvd(double(b));
+cr = csvd_q3(double(r));
+cg = csvd_q3(double(g));
+cb = csvd_q3(double(b));
 
 % concatenate the three channels together after compression
 final = cat(3, cr, cg, cb);

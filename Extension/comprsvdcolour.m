@@ -19,4 +19,4 @@ cb = csvd(double(b), 5, 'blue');
 final = cat(3, cr, cg, cb);
 
 % write compressed image to file
-imwrite(uint8(final), 'compressed.jpg' );
+imwrite(uint8(final), 'compressed.jpg');

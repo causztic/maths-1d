@@ -47,10 +47,15 @@ function a = csvd(d, index, color)
     xlim([0,r]);
     ylim([-10,10]);
     
-    % find an acceptable difference to use, we will use 1 and 1.1
+    % find an acceptable difference to use, we will use 0.8 and 0.9
     diff = abs(space_gradient-quality_gradient');
     idx = find(diff > 0.8 & diff < 0.9);
-    l = x(idx);
+    
+    if idx
+        l = x(idx);
+    else
+        l = r;
+    end
     
     % pick only singular values that are the at least 1% of the maximum
     % singular value.
