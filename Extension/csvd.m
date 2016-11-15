@@ -16,8 +16,8 @@ function a = csvd(d, index, color)
     
     % a lower triangular matix of 1s multiplied by S then by a column
     % vector of 1s sums up the trace for each l from 1 to r.
-    t = tril(ones(ms, ns));
-    quality = (t*S*ones(ms, 1));
+    t = tril(ones(ms, ms));
+    quality = (t*S*ones(ns, 1));
     % The resulting traces when divided by the initial trace gives us
     % the quality ratio.
    	quality_y = (quality/quality(ms))*100;
