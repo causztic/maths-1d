@@ -1,9 +1,12 @@
-% bonus marks for using the best image for compression? :)
+% bonus marks for using the lena.jpg? :)
 
 % compress an image using svd
 % convert color image to grayscale so we don't need to make 2 images
 
 % various intensities
+% adapted from 
+% http://angeljohnsy.blogspot.com/2011/04/rgb-image-to-grayscale-image.html
+
 red = 0.2989; 
 green = 0.5870;
 blue = 0.1140;
@@ -36,9 +39,6 @@ for i = 1:4
         percentage = (1/compression_ratio)*100;
        	text(0, 30+m, sprintf('Compression ratio: %.2f', compression_ratio));
         text(0, 60+m, sprintf('Image is %.2f%% of original', percentage));  
-        % C) Additional Questions 
-        % list = 1:1:i*10;
-        % imagesc(U(:,list)*S(list,list)*V(:,list)');
     end
     axis off image;
 end

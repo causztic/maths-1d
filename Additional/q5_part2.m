@@ -1,4 +1,5 @@
 % compress an image using svd
+% The image will be compressed poorly.
 
 pic = double(imread('test3.jpg'));
 

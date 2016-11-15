@@ -1,30 +1,31 @@
 function a = csvd_q3(d)
 
-    % the code is exactly the same as question 2.
     [U,S,V] = svd(d);
     [ms, ns] = size(S);
     
-    r = ceil((ms*ns)/(1+ms+ns));
     t = tril(ones(ms, ms));
-    
     quality = (t*S*ones(ns, 1));
+    
+    % The resulting traces when divided by the initial trace gives us the quality ratio.
    	quality_y = (quality/quality(ms))*100;
     
+    % space_y is the compression ratio from question 1 expressed as a  percentage.  
     x = 1:min(ms,ns);
     space_y = ((ms*ns)./(x*(1+ms+ns)));
+
+    diff = quality_y - space_y';
+    g = gradient(diff);
     
-    quality_gradient = quality_y./x';
-    space_gradient = space_y./x;
+    % A we approach r, for every increasing l, there is a 
+    % decreasing % of compression and lesser quality kept per l.
     
-    % find an acceptable difference to use, we will use 0.8 and 0.9
-    diff = abs(space_gradient-quality_gradient');
-    idx = find(diff > 0.8 & diff < 0.9);
-    
-    if idx
-        l = x(idx);
-    else
-        l = r;
-    end
+    % This means that the gradient of the difference approaches 0 when l 
+    % approaches r.
+    % With this in mind, we find the smallest acceptable l 
+    % that has a gradient close to 0. 
+    % We choose 0.15 to be the cut off point.
+
+    l = ceil(find(g < 0.15, 1));
     
     % MUTLIPICATION 
     
