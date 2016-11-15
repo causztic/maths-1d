@@ -1,6 +1,4 @@
 function a = csvd_q5_part2(d)
-
-    % the code is exactly the same as question 2.
     [U,S,V] = svd(d);
     [ms, ns] = size(S);
     % choose the maximum possible l (though not the most efficient)

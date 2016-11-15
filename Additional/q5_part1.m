@@ -1,4 +1,4 @@
-% compress an image using svd
+% the image that is able to use l = 1 and still compress
 
 pic = double(imread('test2.jpg'));
 
