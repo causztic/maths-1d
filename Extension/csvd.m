@@ -38,24 +38,13 @@ function a = csvd(d, index, color)
     ylabel('percentage');
     legend('y = quality(r)','y = compression(r)','Location','southeast')
     
-    % plot the gradients
+    % plot the difference
     subplot(3,2,index+1);
-    quality_gradient = quality_y./x';
-    space_gradient = space_y./x;
-    plot(x, quality_gradient, x, space_gradient);
-    
+    diff = quality_y - space_y';
+    plot(x, diff);    
+    ylim([0,100]);
     xlim([0,r]);
-    ylim([-10,10]);
-    
-    % find an acceptable difference to use, we will use 0.8 and 0.9
-    diff = abs(space_gradient-quality_gradient');
-    idx = find(diff > 0.8 & diff < 0.9);
-
-    if idx
-        l = x(idx);
-    else
-        l = r;
-    end
+    l = r;
 %     
     % pick only singular values that are the at least 1% of the maximum
     % singular value.
