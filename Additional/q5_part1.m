@@ -9,9 +9,11 @@ b = pic(:,:,3);
 
 % csvd compress 
 cr = csvd_q5_part1(double(r));
+cb = csvd_q5_part1(double(g));
+cg = csvd_q5_part1(double(b));
 
 % concatenate the three channels together after compression
-final = cat(3, cr, g, b);
+final = cat(3, cr, cg, cb);
 
 % write compressed image to file
 imwrite(uint8(final), 'compressed2.jpg');

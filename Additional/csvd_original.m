@@ -1,4 +1,4 @@
-function a = csvd(d, index, color)
+function a = csvd(d)
     [U,S,V] = svd(d);
     [ms, ns] = size(S);
     r = ceil((ms*ns)/(1+ms+ns));
@@ -20,6 +20,7 @@ function a = csvd(d, index, color)
         l = r;
     end
     
+    % SUMMATION
     a = appr(U,S,V',l);
 
     % convert numbers to string to display on console
@@ -28,5 +29,5 @@ function a = csvd(d, index, color)
     ell = num2str(max(l));
     
     % display dimensions and l for each channel
-    disp([m,' x ',n,' using l = ',ell,' for the ',color,' channel.']);
+    disp([m,' x ',n,' using l = ',ell]);
 end

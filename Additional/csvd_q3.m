@@ -26,10 +26,7 @@ function a = csvd_q3(d)
         l = r;
     end
     
-    % instead of for loop, use direct multiplication
-    % it will be faster than indiviually adding up for each value from 1:l
-    % because the addition function will be called once for each element
-    % from 1 to l while the new method will only be called once.
+    % MUTLIPICATION 
     
     list = 1:l;
     a = U(:,list)*S(list, list)*V(:,list)';
